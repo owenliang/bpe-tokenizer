@@ -105,6 +105,10 @@ class BPETokenizer:
         # 特殊token分离
         pattern='('+'|'.join([re.escape(tok) for tok in self.sp_s2i])+')'
         splits=re.split(pattern,text)
+
+        # 未指定特殊token时
+        if len(self.sp_s2i) == 0:
+            splits = [text]
         
         # 编码结果
         enc_ids=[]
